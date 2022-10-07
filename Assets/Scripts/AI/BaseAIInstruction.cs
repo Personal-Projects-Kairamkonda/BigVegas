@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class BaseAIMovement : BaseAI
+public class BaseAIInstruction : BaseAI
 {
     private Vector3 direction;
     private float distance;
     private float angle;
-    private bool move;
 
-    private float moveThreshold = 5f;
+    private string message;
 
     void FixedUpdate()
     {
         CalculateAngle();
+        UpdateTextData();
     }
 
     private void CalculateAngle()
@@ -23,16 +24,27 @@ public class BaseAIMovement : BaseAI
         transform.localEulerAngles = angle * Vector3.up;
 
         distance = Vector3.Distance(transform.position, target.position);
-        move = distance > moveThreshold;
 
-        if (move)
+        if(distance>15)
         {
-            transform.Translate(Vector3.forward * 0.8f * Time.fixedDeltaTime);
-            animator.SetBool("move", move);
+            message = "Hi Vegas";
+            animator.Play("Happy Idle");
         }
-        else
+        if (distance<13)
         {
-            animator.SetBool("move", move);
+            message = "I have got a challange for you";
+            animator.Play("Offensive Idle");
         }
+        if (distance<5)
+        {
+            message="Enter into portal to start";
+            dialougeText.text = message;
+        }
+        
+    }
+
+    private void UpdateTextData()
+    {
+        dialougeText.text = message;
     }
 }
