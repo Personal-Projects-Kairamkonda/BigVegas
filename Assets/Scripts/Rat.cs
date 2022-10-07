@@ -19,7 +19,7 @@ public class Rat : MonoBehaviour
     void OnEnable() => input.DoozyControls.Enable();
     void OnDisable() => input.DoozyControls.Disable();
 
-    float moveThresshold=10f;
+    float moveThresshold=5f;
 
     void Awake()
     {
@@ -44,29 +44,19 @@ public class Rat : MonoBehaviour
         transform.localEulerAngles = angle * Vector3.up;
 
         float distance = Vector3.Distance(transform.position, human.position);
-        move = distance < moveThresshold;
-       
-        if (distance<moveThresshold)
-        {
-            animator.Play("Offensive Idle");
-        }
-        else if (distance < (moveThresshold - 2))
-        {
-            animator.Play("Pointing Gesture");
-        }
-    }
-    /*Movement Logic
-     if (distance<moveThresshold)
+        move = distance>moveThresshold;
+
+        if (move)
         {
             transform.Translate(Vector3.forward * 0.8f * Time.fixedDeltaTime);
             animator.SetBool("move", move);
         }
-      else
+        else
         {
             dialougeText.text = "I have got you a puzzle";
             animator.SetBool("move", move);
         }
-    */
+    }
 
     void OnDrawGizmos()
     {
