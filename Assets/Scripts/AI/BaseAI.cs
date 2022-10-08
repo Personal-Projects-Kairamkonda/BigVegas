@@ -14,5 +14,12 @@ public class BaseAI : MonoBehaviour
         dialougeText = transform.GetChild(1).GetComponent<TextMesh>();
     }
 
-
+    public string AnimatorInfo()
+    {
+        string state;
+        AnimatorClipInfo[] clipInfo;
+        clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        state = clipInfo[0].clip.name;
+        return state;
+    }
 }

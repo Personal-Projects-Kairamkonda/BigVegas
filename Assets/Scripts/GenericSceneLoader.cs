@@ -10,14 +10,24 @@ public class GenericSceneLoader : MonoBehaviour
     private LineRenderer lineRenderer;
 
     void Awake() => lineRenderer = GetComponent<LineRenderer>();
-    void Start() => Portal();
+    void Start() => Portal(30,1.5f);
 
-    private void Portal()
+    private void Portal(int steps, float radius)
     {
-        float x = Mathf.Cos(Time.time);
-        float z = Mathf.Sin(Time.time);
+        lineRenderer.positionCount = steps;
 
-        lineRenderer.SetPosition(0, new Vector3(x, 0, z));
+        for (int i = 0; i < steps; i++)
+        {
+            float circumferenceProgress = (float) i / steps;
+            float currentRadian = circumferenceProgress * 2 * Mathf.PI;
+
+            float x = (Mathf.Cos(currentRadian) *radius)+transform.position.x;
+            float y = (Mathf.Sin(currentRadian)* radius)+transform.position.y;
+            float z = transform.position.z;
+
+            Vector3 currentPos= new Vector3(x, y, z);
+            lineRenderer.SetPosition(i, currentPos);
+        }
     }
 
     void OnTriggerEnter(Collider other)

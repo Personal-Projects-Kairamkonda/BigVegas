@@ -1,28 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOneBigVegas : MonoBehaviour
 {
-    public GameOneDoozy doozy;
+    private Animator animator;
 
-    private string style1="Chicken Dance";
+    public Text dialougeText;
+
+    private string style1= "Hip Hop Dancing";
     private string style2= "Gangnam Style";
 
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            PlayChickenDance();
+        animator = transform.GetChild(0).GetComponent<Animator>();
     }
 
-    public void PlayChickenDance()
+    public void PlayHipHopDancing()
     {
-        this.transform.GetChild(0).GetComponent<Animator>().Play(style1);
+        animator.Play(style1);
+        UpdateDialougeText("Hip Hop Dancing");
     }
 
-    public void PlayWarriorIdle()
+    public void PlayGangnamStyle()
     {
-        this.transform.GetChild(0).GetComponent<Animator>().Play(style2);
+        animator.Play(style2);
+        UpdateDialougeText("Gangnam Style");
     }
 
+    public void UpdateDialougeText(string dialouge)
+    {
+        dialougeText.text = dialouge;
+    }
+
+    public string AnimatorInfo()
+    {
+        string state;
+        AnimatorClipInfo[] clipInfo;
+        clipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        state = clipInfo[0].clip.name;
+        return state;
+    }
 }
