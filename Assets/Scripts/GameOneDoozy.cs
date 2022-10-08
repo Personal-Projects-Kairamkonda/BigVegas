@@ -6,11 +6,11 @@ public class GameOneDoozy : MonoBehaviour
 {
     private Animator animator;
 
-    private string[] animationStrings= new string[5];
+    private string[] animationStrings= new string[4];
 
-    private string style1 = "Chicken Dance";
+    private string style1 = "Hip Hop Dancing";
     private string style2 = "Gangnam Style";
-    private string style3 = "Hip Hop Dancing";
+    private string style3 = "Chicken Dance";
     private string style4 = "Robot Hip Hop Dance";
 
     void Awake()
@@ -21,22 +21,21 @@ public class GameOneDoozy : MonoBehaviour
         animationStrings[1] = style2;
         animationStrings[2] = style3;
         animationStrings[3] = style4;
-        animationStrings[4] = style1;
     }
 
     public void RandomAnimation()
     {
-        animator.Play(animationStrings[Random.Range(0,5)]);
+        string currentAnim = AnimatorInfo();
+        string randAnim = animationStrings[Random.Range(0, 4)];
 
-        /*
-        for (int i = 0; i < animationStrings.Length; i++)
+        if (currentAnim!=randAnim)
         {
-            string currentAnim = AnimatorInfo();
-            if (currentAnim == animationStrings[i])
-            {
-            }
+            animator.Play(randAnim);
         }
-        */
+        else
+        {
+            RandomAnimation();
+        }
     }
 
     public string AnimatorInfo()

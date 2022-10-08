@@ -1323,19 +1323,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 991756022}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1685846560}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Style2
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &991756022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2490,19 +2478,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1492707956}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1685846560}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Style1
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1492707956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2737,6 +2713,8 @@ MonoBehaviour:
   playerButtons:
   - {fileID: 1492707955}
   - {fileID: 991756021}
+  - {fileID: 154231376}
+  - {fileID: 1366340031}
   scoreText: {fileID: 257235858}
 --- !u!4 &1685846561
 Transform:

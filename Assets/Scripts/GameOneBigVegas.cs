@@ -11,10 +11,13 @@ public class GameOneBigVegas : MonoBehaviour
 
     private string style1= "Hip Hop Dancing";
     private string style2= "Gangnam Style";
+    private string style3 = "Chicken Dance";
+    private string style4 = "Robot Hip Hop Dance";
 
     void Awake()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        UpdateDialougeText( "Hi Doozy");
     }
 
     public void PlayHipHopDancing()
@@ -27,6 +30,18 @@ public class GameOneBigVegas : MonoBehaviour
     {
         animator.Play(style2);
         UpdateDialougeText("Gangnam Style");
+    }
+
+    public void PlayChickenDance()
+    {
+        animator.Play(style3);
+        UpdateDialougeText(style3);
+    }
+
+    public void PlayRobotHipHopDance()
+    {
+        animator.Play(style4);
+        UpdateDialougeText(style4);
     }
 
     public void UpdateDialougeText(string dialouge)
