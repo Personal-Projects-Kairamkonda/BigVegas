@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator CheckSimilarState()
     {
+        DisableButtons();
         yield return new WaitForSeconds(1f);
 
         doozyState = doozy.AnimatorInfo();
@@ -41,6 +42,8 @@ public class GameManager : MonoBehaviour
         UpdateScore();
 
         yield return new WaitForSeconds(3f);
+        EnableButtons();
+
         doozy.RandomAnimation();
 
         StopCoroutine(CheckSimilarState());
