@@ -21,16 +21,16 @@ public class GenericSceneLoader : MonoBehaviour
             float circumferenceProgress = (float) i / steps;
             float currentRadian = circumferenceProgress * 2 * Mathf.PI;
 
-            float x = (Mathf.Cos(currentRadian) *radius)+transform.position.x;
-            float y = (Mathf.Sin(currentRadian)* radius)+transform.position.y;
-            float z = transform.position.z;
+            float x = (Mathf.Cos(currentRadian) *radius);
+            float y = (Mathf.Sin(currentRadian)* radius);
+            float z = 0;
 
             Vector3 currentPos= new Vector3(x, y, z);
             lineRenderer.SetPosition(i, currentPos);
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         SceneManager.LoadScene(nextScene);
     }

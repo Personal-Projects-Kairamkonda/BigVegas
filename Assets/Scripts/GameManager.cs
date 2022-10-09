@@ -103,3 +103,10 @@ public class GameManager : MonoBehaviour
        Debug.Log($"Big Vegas state: {bigVegasState}");
     }
 }
+
+[System.Serializable]
+public enum SceneData
+{
+    PrototypeOldInputs,
+    MiniGameOne
+}
