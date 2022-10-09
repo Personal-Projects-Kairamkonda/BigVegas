@@ -30,8 +30,10 @@ public class GenericSceneLoader : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(nextScene);
+        //SceneManager.LoadScene(nextScene);
+
+        FlashScreen.instance.GameOne();
     }
 }

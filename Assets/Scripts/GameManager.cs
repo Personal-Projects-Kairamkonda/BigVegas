@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
         bigVegasState = bigVegas.AnimatorInfo();
 
         if (doozyState == bigVegasState)
+        {
+            //FlashScreen.instance.score++;
             score++;
+        }
         else
             bigVegas.UpdateDialougeText("Try Again");
 
