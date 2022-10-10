@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class GameState : StateMachineBehaviour
@@ -11,7 +12,7 @@ public class GameState : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     { 
-        animator.transform.parent.GetChild(1).GetComponent<TextMesh>().text = message;
+        animator.transform.parent.GetChild(1).GetComponent<TextMeshPro>().text = message;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

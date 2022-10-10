@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     public GameOneBigVegas bigVegas;
     public Button[] playerButtons;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI livesText;
 
     private string doozyState;
     private string bigVegasState;
     private int score;
+    private int lives=3;
 
     void Awake()
     {
@@ -23,6 +25,11 @@ public class GameManager : MonoBehaviour
         playerButtons[3].onClick.AddListener(Style4);
 
         DisableButtons();
+    }
+
+    void Start()
+    {
+        UpdateLivesText();
         StartCoroutine(PlayState());
     }
 
@@ -36,25 +43,37 @@ public class GameManager : MonoBehaviour
 
         if (doozyState == bigVegasState)
         {
-            //FlashScreen.instance.score++;
             score++;
         }
         else
+        {
             bigVegas.UpdateDialougeText("Try Again");
+            lives--;
+        }
 
-        UpdateScore();
+        UpdateLivesText();
+
+        if (lives<1)
+            FlashScreen.instance.MapScene();
+        else
+            UpdateScoreText();
 
         yield return new WaitForSeconds(3f);
-        EnableButtons();
 
+        EnableButtons();
         doozy.RandomAnimation();
 
         StopCoroutine(CheckSimilarState());
     }
 
-     void UpdateScore() 
+     void UpdateScoreText() 
      {
         scoreText.text = score.ToString();
+    }
+
+    void UpdateLivesText()
+    {
+        livesText.text = lives.ToString();
     }
 
     IEnumerator PlayState()
@@ -110,6 +129,7 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public enum SceneData
 {
-    PrototypeOldInputs,
+    MainMenu,
+    MapScene,
     MiniGameOne
 }

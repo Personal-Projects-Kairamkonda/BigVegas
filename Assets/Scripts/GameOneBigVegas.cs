@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameOneBigVegas : MonoBehaviour
 {
     private Animator animator;
 
-    public Text dialougeText;
+    public TextMeshProUGUI dialougeText;
 
     private string style1= "Hip Hop Dancing";
     private string style2= "Gangnam Style";

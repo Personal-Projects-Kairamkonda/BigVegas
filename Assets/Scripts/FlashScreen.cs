@@ -9,25 +9,20 @@ public class FlashScreen : MonoBehaviour
 
     public static FlashScreen instance;
 
-    public int score;
+    private int score;
 
     void Awake()
     {
-        instance = this;
+        if(instance==null)
+            instance = this;
 
-        SceneManager.LoadScene(SceneData.PrototypeOldInputs.ToString(),LoadSceneMode.Additive);
-        sceneData = SceneData.PrototypeOldInputs;
+        ClearScenes();
     }
 
-    void Update()
+    void Start()
     {
-       /* if (Input.GetKeyDown(KeyCode.Space))
-            SwitchScenes();*/
-
-        if(score>2)
-        {
-            MapScene();
-        }
+        SceneManager.LoadSceneAsync(SceneData.MapScene.ToString(), LoadSceneMode.Additive);
+        sceneData = SceneData.MapScene;
     }
 
     void SwitchScenes()
@@ -35,22 +30,28 @@ public class FlashScreen : MonoBehaviour
         if (sceneData == SceneData.MiniGameOne)
             MapScene();
         else
-            GameOne();
+            MiniGameOne();
     }
 
     public void MapScene()
     {
         SceneManager.UnloadSceneAsync(SceneData.MiniGameOne.ToString());
-        SceneManager.LoadSceneAsync(SceneData.PrototypeOldInputs.ToString(), LoadSceneMode.Additive);
-        sceneData = SceneData.PrototypeOldInputs;
-        Debug.Log("Prototyped loaded");
+        SceneManager.LoadSceneAsync(SceneData.MapScene.ToString(), LoadSceneMode.Additive);
+        sceneData = SceneData.MapScene;
+        Debug.Log("Map Scene Loaded");
     }
 
-    public void GameOne()
+    public void MiniGameOne()
     {
-        SceneManager.UnloadSceneAsync(SceneData.PrototypeOldInputs.ToString());
+        SceneManager.UnloadSceneAsync(SceneData.MapScene.ToString());
         SceneManager.LoadSceneAsync(SceneData.MiniGameOne.ToString(), LoadSceneMode.Additive);
         sceneData = SceneData.MiniGameOne;
-        Debug.Log("mini game loaded");
+        Debug.Log("Mini Game One Loaded");
+    }
+
+    public void ClearScenes()
+    {
+       
+
     }
 }

@@ -1,11 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class Character : MonoBehaviour
 {
-    public Text playerDialougeText;
+    public TextMeshProUGUI playerDialougeText;
 
     CharacterController characterController;
     Animator GetAnimator;

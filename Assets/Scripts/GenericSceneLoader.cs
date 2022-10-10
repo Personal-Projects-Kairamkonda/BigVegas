@@ -32,8 +32,6 @@ public class GenericSceneLoader : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        //SceneManager.LoadScene(nextScene);
-
-        FlashScreen.instance.GameOne();
+        FlashScreen.instance.MiniGameOne();
     }
 }
