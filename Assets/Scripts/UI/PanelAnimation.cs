@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class PanelAnimation : MonoBehaviour
 {
+    private Animator animator;
+
     void OnEnable()
     {
         ClosePanel();
     }
 
+    public void OpenPanel()
+    {
+        this.GetComponent<Animator>().Play("Open");
+    }
+
     public void ClosePanel()
     {
-        transform.position = (Vector3.right +Vector3.up)* 500*Time.deltaTime;
+        this.GetComponent<Animator>().Play("Close");
     }
+
 }

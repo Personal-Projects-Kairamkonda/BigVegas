@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            bigVegas.UpdateDialougeText("Try Again");
+            FlashScreen.instance.UpdateDialougeText("Try Again");
             lives--;
         }
 

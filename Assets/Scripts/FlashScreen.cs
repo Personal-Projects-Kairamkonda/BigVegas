@@ -1,28 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using UnityEditor.Rendering;
+using System.Collections;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class FlashScreen : MonoBehaviour
 {
+    public GameObject settingsPanel;
+
     private SceneData sceneData;
+    private int score;
 
     public static FlashScreen instance;
-
-    private int score;
+    public TextMeshProUGUI playerDialougeText;
 
     void Awake()
     {
         if(instance==null)
             instance = this;
-
-        ClearScenes();
     }
 
     void Start()
     {
         SceneManager.LoadSceneAsync(SceneData.MapScene.ToString(), LoadSceneMode.Additive);
         sceneData = SceneData.MapScene;
+    }
+
+    void Update()
+    {
+       if (Input.GetKeyDown(KeyCode.Escape))
+          EnableSoundsPanel();
+    }
+
+
+    public void EnableSoundsPanel()
+    {
+        settingsPanel.GetComponent<PanelAnimation>().OpenPanel();
+        Cursor.lockState = CursorLockMode.None;
+        //PauseScene.Pause();
+    }
+
+    public void DisableSoundsPanel()
+    {
+        settingsPanel.GetComponent<PanelAnimation>().ClosePanel();
+        Cursor.lockState = CursorLockMode.Locked;
+        //PauseScene.Resume();
+    }
+
+    public void UpdateDialougeText(string dialouge)
+    {
+        playerDialougeText.text = dialouge;
     }
 
     void SwitchScenes()
