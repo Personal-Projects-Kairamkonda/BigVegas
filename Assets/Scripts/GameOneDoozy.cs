@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameOneDoozy : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource GetAudioSource;
 
     private string[] animationStrings= new string[4];
 
@@ -16,6 +17,7 @@ public class GameOneDoozy : MonoBehaviour
     void Awake()
     {
         animator = transform.GetChild(0).GetComponent<Animator>();
+        GetAudioSource = transform.GetComponent<AudioSource>();
 
         animationStrings[0] = style1;
         animationStrings[1] = style2;

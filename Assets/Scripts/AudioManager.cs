@@ -17,36 +17,58 @@ public class AudioManager : MonoBehaviour
 
     void Awake()
     {
-        //musicSlider.value = MusicDefaultVolume();
-
-        Debug.Log($"Music slider value: {musicSlider.value}");
-        Debug.Log($"Music Voulme value: { MusicDefaultVolume()}");
+        musicSlider.value = MusicDefaultVolume();
+        sfxSlider.value = SFXDefaultVolume();
 
         musicSlider.onValueChanged.AddListener(ChangeMusicVolume);
         sfxSlider.onValueChanged.AddListener(ChangeSFXVolume);
     }
 
+    //sets silder value from the volume
     public float MusicDefaultVolume()
     {
         float value;
         bool result = audioMixer.GetFloat(mixerMusic, out value);
         if (result)
-            return Mathf.Log(value);
+        {
+            return Mathf.Pow(10.0f, value / 20.0f);
+        }
         else
         {
             return 0f;
         }
     }
-   
-    void ChangeMusicVolume(float value)
+
+
+    public float SFXDefaultVolume()
     {
-        audioMixer.SetFloat(mixerMusic, Mathf.Log(value) * 20);
+        float value;
+        bool result = audioMixer.GetFloat(sfxMusic, out value);
+        if (result)
+        {
+            return Mathf.Pow(10.0f, value / 20.0f);
+        }
+        else
+        {
+            return 0f;
+        }
+    }
+
+    //sets volume from the slider
+    public void SetMusicVolume(float value)
+    {
+        
+    }
+
+    void ChangeMusicVolume(float value)
+    { 
+        audioMixer.SetFloat(mixerMusic, Mathf.Log10(value) * 20);
     }
 
     void ChangeSFXVolume(float value)
     {
-        audioMixer.SetFloat(sfxMusic, Mathf.Log(value) * 20);
+        audioMixer.SetFloat(sfxMusic, Mathf.Log10(value) * 20);
     }
 
-  
+
 }

@@ -45,6 +45,7 @@ public class FlashScreen : MonoBehaviour
     public void DisableSoundsPanel()
     {
         settingsPanel.GetComponent<PanelAnimation>().ClosePanel();
+        if(sceneData==SceneData.MapScene)
         Cursor.lockState = CursorLockMode.Locked;
         //PauseScene.Resume();
     }
