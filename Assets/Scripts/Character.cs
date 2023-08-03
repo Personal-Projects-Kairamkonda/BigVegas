@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 public class Character : MonoBehaviour
 {
-    private TextMeshProUGUI playerDialougeText;
+    public TextMeshProUGUI playerDialougeText;
     private string playerDialouge;
 
     CharacterController characterController;
@@ -38,7 +38,8 @@ public class Character : MonoBehaviour
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
 
-        playerDialougeText = FlashScreen.instance.playerDialougeText;
+        //removed dependance on main menu scene
+        //playerDialougeText = FlashScreen.instance.playerDialougeText;
     }
 
     void Start()
