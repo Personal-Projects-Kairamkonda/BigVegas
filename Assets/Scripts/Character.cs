@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.InputSystem;
 
 
 public class Character : MonoBehaviour
@@ -75,11 +76,19 @@ public class Character : MonoBehaviour
             GetAnimator.SetBool(isRunningHash, false);
     }
 
+
+    //public void OnMove(InputValue value) => direction = value.Get<Vector2>();
+
+    /// <summary>
+    /// Old Input System for movement
+    /// </summary>
     void HandleMovement()
     {
+        
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         direction = new Vector3(horizontal, 0f, vertical).normalized;
+        
 
         if (direction.magnitude >= 0.1f)
         {
@@ -91,7 +100,9 @@ public class Character : MonoBehaviour
 
             movedir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             characterController.Move(movedir.normalized * speed * Time.deltaTime);
-        }
+        }   
+
+        //Run or Sprint
         if (direction.magnitude >= 0.1f && Input.GetKey(KeyCode.LeftShift))
         {
             isRunPressed = true;
@@ -138,10 +149,10 @@ public class Character : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Interactable"))
-            FlashScreen.instance.UpdateDialougeText("Aww!! cool dance old man");
+          //FlashScreen.instance.UpdateDialougeText("Aww!! cool dance old man");
 
         if (other.gameObject.CompareTag("Doozy"))
-            FlashScreen.instance.UpdateDialougeText("Hello Doozy, Have you slept yet?");
+            //FlashScreen.instance.UpdateDialougeText("Hello Doozy, Have you slept yet?");
 
         Debug.Log(other.gameObject.name);
     }
@@ -149,6 +160,7 @@ public class Character : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Interactable"))
-            FlashScreen.instance.UpdateDialougeText("Go to meet the Doozy, He is waiting above the stairs");
+        { }
+            //FlashScreen.instance.UpdateDialougeText("Go to meet the Doozy, He is waiting above the stairs");
     }
 }

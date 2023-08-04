@@ -34,12 +34,12 @@ public class BaseAIInstruction : BaseAI
         {
             message = "I have got a challange for you";
             animator.Play("Offensive Idle");
-            FlashScreen.instance.UpdateDialougeText("Hello Doozy, Haven't you slept yet?");
+            //FlashScreen.instance.UpdateDialougeText("Hello Doozy, Haven't you slept yet?");
         }
         if (distance<5)
         {
             message="Enter into portal to start";
-            FlashScreen.instance.UpdateDialougeText("Let see! What have you got.");
+            //FlashScreen.instance.UpdateDialougeText("Let see! What have you got.");
             dialougeText.text = message;
         }
     }
